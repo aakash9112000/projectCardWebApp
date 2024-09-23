@@ -1,3 +1,11 @@
+# Project Card Web App
+
+Welcome to the **Project Card Web App**! This application allows users to manage cards, organize them into customizable buckets, and more.
+
+
+
+**Live link**
+https://project-card-web-app.vercel.app/
 **Card Management**
 
 Implemented a feature allowing users to create, edit, and delete cards. Each card contains two fields: a name and a video or MP3 link.
@@ -21,4 +29,8 @@ Implemented a simple user authentication system. Users can only access card and 
 Tech Stack and Additional Features
 
 Frontend: Built with React, state management using Redux, navigation via React Router, and enhanced UI components using Ant Design.
-For more details, check out the Project **Card Web App**.
+For more details, check out the Project **Card Web App**.         
+
+
+
+
