@@ -1,0 +1,104 @@
+/* Background with gradient */
+.login-signup-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+  }
+  
+  /* Fade-in effect for form */
+  .fade-in-form {
+    animation: fadeIn 1.2s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* Shake animation on error */
+  .shake {
+    animation: shake 0.5s;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+  }
+  
+  /* Hover effect for button */
+  .hover-button {
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s ease;
+  }
+  
+  .hover-button:hover {
+    background-color: #0072ff;
+    transform: scale(1.05);
+  }
+  
+  /* Card and input field focus effect */
+  .ant-input-affix-wrapper:focus-within {
+    box-shadow: 0 0 5px #0072ff;
+    border-color: #0072ff;
+  }
+  /* Gradient background with optional background image */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(135deg, #f8f7f5, #e0ddd7, #d1cdc3); */
+
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  
+  /* Optional background image (uncomment to use an image) */
+  /* 
+  .login-page {
+    background: url('path/to/your-background-image.jpg') no-repeat center center/cover;
+  } 
+  */
+  
+  /* Card design with shadows */
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* App title with gradient text */
+  .app-title {
+    font-size: 48px;
+    /* margin-bottom: 20px; */
+    color: #6d28d9;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    animation: colorChange 5s ease infinite;
+  }
+  
+  @keyframes colorChange {
+    0% { color: #6d28d9; }
+    50% { color: #a78bfa; }
+    100% { color: #6d28d9; }
+  }
+  
+  /* Button hover effect */
+  .submit-button {
+    width: 100%;
+    background: linear-gradient(135deg, #4f46e5, #818cf8);
+    border: none;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .submit-button:hover {
+    background: linear-gradient(135deg, #4338ca, #6366f1);
+    transform: scale(1.05);
+  }
+  

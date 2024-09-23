@@ -1,3 +1,8 @@
+/* body {
+  background-color: #87ceeb;
+} */
+
+
 .App {
   text-align: center;
 }
@@ -28,11 +33,38 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  40% {
+    transform: translateY(-20px);
   }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.animated-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.bounce {
+  animation: bounce 1s ease-in-out;
+}
+.carousel-slider .slick-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carousel-slider .slick-dots li button:before {
+  color: #007bff; /* Change dot color */
+}
+
+.carousel-slider .slick-prev,
+.carousel-slider .slick-next {
+  color: #007bff; /* Change arrow color */
 }
