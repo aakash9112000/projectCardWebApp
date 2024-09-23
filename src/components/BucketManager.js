@@ -5,7 +5,7 @@ import { Button, Input, Select, Row, Col, Divider, Typography } from 'antd';
 
 const { Option } = Select;
 
-const BucketManager = ({ onAddCard }) => {
+const BucketManager  = ({ onAddCard }) => {
   const [bucketName, setBucketName] = useState('');
   const [cardName, setCardName] = useState('');
   const [mediaLink, setMediaLink] = useState('');
