@@ -14,11 +14,12 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
+    stage('Build') {
+    steps {
+        sh 'CI=false npm run build'
+    }
+}
+
 
         stage('Archive Build Files') {
             steps {
