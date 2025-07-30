@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/aakash9112000/projectCardWebApp'
+                git branch: 'main', url: 'https://github.com/aakash9112000/projectCardWebApp'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Archive') {
+        stage('Archive Build Files') {
             steps {
                 archiveArtifacts artifacts: 'build/**', fingerprint: true
             }
