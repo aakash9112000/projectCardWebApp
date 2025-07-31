@@ -29,14 +29,14 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 sshagent(['ec2-ssh-key']) {
-                    sh """
-                    echo "Copying files to EC2..."
-                    scp -o StrictHostKeyChecking=no -r build/* ec2-user@<EC2_PUBLIC_IP>:/var/www/react-app/
-
-                    echo "Deployment complete!"
-                    """
+                    sh '''
+                        echo "Copying build files to EC2..."
+                        scp -o StrictHostKeyChecking=no -r build/* ec2-user@<EC2_PUBLIC_IP>:/var/www/react-app/
+                        echo "Deployment complete!"
+                    '''
                 }
             }
         }
+
     }
 }
