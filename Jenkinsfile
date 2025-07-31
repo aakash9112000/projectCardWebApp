@@ -34,13 +34,17 @@ stage('Deploy to EC2') {
     steps {
         sshagent(['ec2-key']) {
             sh '''
+                echo "Checking local build folder:"
+                ls -l build || echo "No build folder!"
+
                 echo "Copying build files to EC2..."
-                scp -o StrictHostKeyChecking=no -r build/* ubuntu@52.66.186.126:/var/www/react-app/
+                scp -r -o StrictHostKeyChecking=no build/* ubuntu@52.66.186.126:/var/www/react-app/
                 echo "Deployment complete!"
             '''
         }
     }
 }
+
 
 
 
