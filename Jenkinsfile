@@ -41,21 +41,24 @@ pipeline {
             }
         }
 
-        stage('Deploy to EC2') {
-            steps {
-                echo "Deploying build to EC2 (${EC2_IP})..."
-                sshagent(['ec2-key']) {
-                    sh '''
-                        echo "Checking local build folder before deploy:"
-                        ls -l build || echo "No build folder found!"
+stage('Deploy to EC2') {
+    steps {
+        sshagent(['ec2-key']) {
+            sh '''
+                echo "Checking local build folder before deploy:"
+                ls -l build || echo "No build folder!"
 
-                        echo "Copying build files to EC2 instance..."
-                        scp -r -o StrictHostKeyChecking=no build/* ${EC2_USER}@${EC2_IP}:${EC2_PATH}/
+                echo "Creating target directory on EC2..."
+                ssh -o StrictHostKeyChecking=no ubuntu@15.206.187.59 'sudo mkdir -p /var/www/react-app && sudo chown -R ubuntu:ubuntu /var/www/react-app'
 
-                        echo "Deployment to EC2 completed!"
-                    '''
-                }
-            }
+                echo "Copying build files to EC2 instance..."
+                scp -r -o StrictHostKeyChecking=no build/* ubuntu@15.206.187.59:/var/www/react-app/
+
+                echo "✅ Deployment complete!"
+            '''
         }
+    }
+}
+
     }
 }
