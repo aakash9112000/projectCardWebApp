@@ -14,14 +14,18 @@ pipeline {
             }
         }
 
- stage('Build') {
+stage('Build') {
     steps {
         sh '''
+            echo "Starting React build..."
             CI=false npm run build
-            ls -l build
+
+            echo "Build folder contents:"
+            ls -l build || echo "Build folder not found!"
         '''
     }
 }
+
 
 
         stage('Archive Build Files') {
