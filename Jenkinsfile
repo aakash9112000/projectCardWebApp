@@ -14,17 +14,21 @@ pipeline {
             }
         }
 
-stage('Build') {
+stage('Deploy to EC2') {
     steps {
-        sh '''
-            echo "Starting React build..."
-            CI=false npm run build
+        sshagent(['ec2-key']) {
+            sh '''
+                echo "Checking local build folder:"
+                ls -l build || echo "No build folder!"
 
-            echo "Build folder contents:"
-            ls -l build || echo "Build folder not found!"
-        '''
+                echo "Copying build files to EC2..."
+                scp -r -o StrictHostKeyChecking=no build/* ubuntu@15.206.187.59:/var/www/react-app/
+                echo "Deployment complete!"
+            '''
+        }
     }
 }
+
 
 
 
