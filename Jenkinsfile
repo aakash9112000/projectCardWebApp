@@ -14,11 +14,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                sh 'CI=false npm run build'
-            }
-        }
+ stage('Build') {
+    steps {
+        sh '''
+            CI=false npm run build
+            ls -l build
+        '''
+    }
+}
+
 
         stage('Archive Build Files') {
             steps {
@@ -37,6 +41,7 @@ stage('Deploy to EC2') {
         }
     }
 }
+
 
 
     }
