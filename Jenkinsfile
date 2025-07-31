@@ -14,17 +14,19 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                sh '''
-                    echo "Starting React build..."
-                    CI=false npm run build
+stage('Build') {
+    steps {
+        sh '''
+            echo "Starting React build..."
+            CI=false npm run build
 
-                    echo "Build folder contents:"
-                    ls -l build || echo "Build folder not found!"
-                '''
-            }
-        }
+            echo "Build folder contents:"
+            ls -l build || echo "Build folder not found!"
+        '''
+    }
+}
+
+
 
         stage('Archive Build Files') {
             steps {
@@ -32,14 +34,23 @@ pipeline {
             }
         }
 
-        stage('Deploy to EC2') {
-            steps {
-                sshagent(['ec2-key']) {
-                    sh '''
-                        echo "Checking local build folder before SCP:"
-                        ls -l build || echo "No build folder!"
+stage('Deploy to EC2') {
+    steps {
+        sshagent(['ec2-key']) {
+            sh '''
+                echo "Checking local build folder:"
+                ls -l build || echo "No build folder!"
 
-                        echo "Creating target directory on EC2..."
-                        ssh -o StrictHostKeyChecking=no ubuntu@15.206.187.59 "sudo mkdir -p /var/www/react-app && sudo chown -R ubuntu:ubuntu /var/www/react-app"
+                echo "Copying build files to EC2..."
+                scp -r -o StrictHostKeyChecking=no build/* ubuntu@52.66.186.126:/var/www/react-app/
+                echo "Deployment complete!"
+            '''
+        }
+    }
+}
 
-                        echo "Copying build files to EC2..."
+
+
+
+    }
+}   
